@@ -1,0 +1,31 @@
+$include /etc/inputrc
+# do not bell on tab-completion
+set bell-style none
+
+##set expand-tilde off
+# These break us_intl AltGr
+#set meta-flag on
+#set input-meta on
+#set convert-meta on
+#set output-meta on
+
+# Allow text wrapping
+set horizontal-scroll-mode off
+set mark-directories on
+set mark-symlinked-directories on
+set match-hidden-files on
+
+# completion settings
+set completion-ignore-case on
+set page-completions off
+set completion-query-items 2000
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set completion-prefix-display-length 10
+set print-completions-horizontally off
+
+# reload file
+"\C-x\C-r": re-read-init-file
+#
+C-n: history-search-forward
+C-p: history-search-backward

@@ -1,0 +1,22 @@
+[core]
+  excludesfile = ~/.gitignore_g
+  pager = less
+  autocrlf = input
+  editor = vim
+
+[diff]
+  tool = meld
+
+[difftool]
+  prompt = false
+
+[alias]
+  st = status
+  df = diff
+  br = branch
+  ci = commit
+  co = checkout
+  meld = difftool --dir-diff
+
+[include]
+  path = .gitlocal

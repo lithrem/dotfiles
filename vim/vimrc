@@ -1,0 +1,53 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'altercation/vim-colors-solarized'
+
+" Plugin 'rking/ag.vim'
+" Plugin 'Chun-Yang/vim-action-ag'
+
+
+Plugin 'benekastah/neomake' " Automatic syntax and lint checking
+
+silent function! NVIM()
+  return  (has('nvim'))
+endfunction
+
+
+call vundle#end()
+filetype plugin on
+" filetype plugin indent on
+
+" Font Hack as the default font
+set guifont=Hack\ 9
+
+"
+"" Set solarized colour scheme
+
+" (optional) If everything is too bright and high contrast, then uncomment
+" the next 2 lines:
+" set term=screen-256color
+" let g:solarized_termcolors=256
+syntax enable
+set background=dark
+silent! colorscheme solarized
+
+" Otherwise we need to use shift to copy in nvim
+if NVIM()
+  set mouse=v
+else
+  set mouse=a
+endif
+
+set clipboard=unnamed,unnamedplus
+
+augroup neomake_cmds
+  autocmd! BufWritePost * Neomake
+augroup END

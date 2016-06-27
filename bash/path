@@ -1,0 +1,27 @@
+#!/bin/bash
+# ----------------------------------------------------------------------
+# PATH
+# ---------------------------------------------------------------------
+[ -f "${HOME}/.dotfiles/bash/functions" ] &&
+	source "${HOME}/.dotfiles/bash/functions"
+
+declare -a paths_to_add=(
+    "${HOME}/bin/"
+    "${HOME}/.local/bin/"
+)
+
+[ -r "${HOME}/.local/dotfiles/shell/path" ] &&
+  source "${HOME}/.local/dotfiles/shell/path"
+
+for path_to_add in "${paths_to_add[@]}"
+do
+    [ -d "$path_to_add" ] && PATH="$path_to_add:${PATH}"
+done
+
+PATH=$(puniq "$PATH")
+export PATH
+
+unset paths_to_add path_to_add
+
+# vim: filetype=sh tabstop=4 shiftwidth=4 softtabstop=0 expandtab smarttab:
+

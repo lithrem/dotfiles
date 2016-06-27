@@ -1,0 +1,43 @@
+#!/bin/bash
+# ----------------------------------------------------------------------
+# ALIAS
+# ---------------------------------------------------------------------
+[ -f "${HOME}/.dotfiles/bash/functions" ] &&
+	source "${HOME}/.dotfiles/bash/functions"
+
+alias bc='bc -l'
+alias rld='source ${HOME}/.bashrc'
+
+# Make alias' available when using sudo
+alias sudo='sudo '
+
+if command_exists nvim; then
+    alias vim=nvim
+    alias vi=nvim
+elif command_exists vim; then
+    alias vi=vim
+fi
+
+if command_exists htop; then
+    alias top=htop
+fi
+
+# alias ag to ack/grep if ag is not available
+# https://github.com/chr4/shellrc/blob/master/rc.d/aliases.sh
+if ! command_exists ag; then
+  # Use ack if available
+  if command_exists ack; then
+    alias ag='ack'
+
+  # Debian/Ubuntu executeable name is ack-grep
+  elif command_exists ack-grep; then
+    alias ag='ack-grep'
+
+  # Fallback to grep -Ri
+  else
+    ag() { grep "$@"; }
+  fi
+fi
+
+
+# vim: filetype=sh tabstop=4 shiftwidth=4 softtabstop=0 expandtab smarttab:

@@ -1,0 +1,15 @@
+# .bash_profile
+
+# User specific environment and startup programs
+[ -f "${HOME}/.dotfiles/bash/functions" ] &&
+	source "${HOME}/.dotfiles/bash/functions"
+
+[ -f "${HOME}/.dotfiles/bash/path" ] &&
+	source "${HOME}/.dotfiles/bash/path"
+
+# Get the aliases and functions
+if [ -f "${HOME}/.bashrc" ]; then
+	source "${HOME}/.bashrc"
+fi
+
+# vim: filetype=sh tabstop=4 shiftwidth=4 softtabstop=0 expandtab smarttab:

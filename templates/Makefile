@@ -2,8 +2,9 @@
 
 TARGET = myapp
 
-# if $CC is not set, use gcc as a sensible default
-CC ?= gcc
+# if defaults not set, use sensible defaults
+CC  ?= gcc
+NM  ?= nm
 
 # if $CFLAGS is not set, be very pedantic and compile
 # as C11, that should catch some common errors, also
@@ -66,6 +67,9 @@ $(TARGET): $(OBJECTS)
 # for the same thing ending in .c and run gcc on it
 %.o: %.c $(HEADERS)
 	$(CC) -c $< -o $@ $(CFLAGS)
+
+%.d: %.c
+	$(CPP) $(CFLAGS) $< -MM -MT $(@:.d=.o) >$@
 
 clean:
 	-rm -f *.o

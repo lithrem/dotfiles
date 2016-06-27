@@ -1,0 +1,29 @@
+# .bashrc
+
+# the basics
+: "${HOME=~}"
+: "${LOGNAME=$(id -un)}"
+: "${UNAME=$(uname)}"
+
+# complete hostnames from this file
+: "${HOSTFILE=${HOME}/.ssh/known_hosts}"
+
+# readline config
+: "${INPUTRC=${HOME}/.inputrc}"
+
+# Bring in system bashrc
+[ -r /etc/bashrc ] &&
+    source /etc/bashrc
+#source $HOME/.cargo/env
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+unset GIT_PS1_SHOWDIRTYSTATE
+unset GIT_PS1_SHOWSTASHSTATE
+unset GIT_PS1_SHOWUNTRACKEDFILES
+#  GIT_PS1_SHOWUPSTREAM="verbose legacy git"
+#  GIT_PS1_SHOWCOLORHINTS=1
+
+# vim: ts=4 sts=4 shiftwidth=4 expandtab foldmarker={{,}} foldlevel=0 foldmethod=marker:

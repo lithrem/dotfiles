@@ -1,0 +1,33 @@
+#!/bin/bash
+# ----------------------------------------------------------------------
+# FUNCTIONS
+# ----------------------------------------------------------------------
+[ -f "${HOME}/.dotfiles/library/functions" ] &&
+    source "${HOME}/.dotfiles/library/functions"
+
+
+
+# ----------------------------------------------------------------------
+# PATH MANIPULATION FUNCTIONS
+# ----------------------------------------------------------------------
+
+# Usage: puniq [<path>]
+# Remove duplicate entries from a PATH style value while retaining
+# the original order. Use PATH if no <path> is given.
+#
+# Example:
+#   $ puniq /usr/bin:/usr/local/bin:/usr/bin
+#   /usr/bin:/usr/local/bin
+puniq () {
+    echo "$1" |tr : '\n' |nl |sort -u -k 2,2 |sort -n |
+    cut -f 2- |tr '\n' : |sed -e 's/:$//' -e 's/^://'
+}
+
+
+# NO# of CPUs
+# https://bitbucket.org/audriusk/dotfiles/src/ff4e6b7f1eef/bashrc
+cpus () {
+    grep -c ^processor /proc/cpuinfo
+}
+
+# vim: filetype=sh tabstop=4 shiftwidth=4 softtabstop=0 expandtab smarttab:

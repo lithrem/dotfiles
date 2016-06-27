@@ -1,0 +1,36 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~']
+
+- link:
+# Dotfiles known location
+    ~/.dotfiles: ''
+
+# Bash
+    ~/.bashrc: bash/bashrc
+    ~/.bash_profile: bash/bash_profile
+
+# Git
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_g: git/gitignore_g
+
+# Terminal
+    ~/.inputrc: term/inputrc
+    ~/.Xresources: term/Xresources
+
+# Vim
+    ~/.vimrc: vim/vimrc
+
+# TODO:
+- template:
+    ~/.mrconfig: 
+        path: templates/mrconfig
+        values: {'<DOTFILES_PATH>': '__DOTFILES__'}
+
+
+- shell:
+    - mkdir -p ~/.local/dotfiles/shell
+# vim: tabstop=4 shiftwidth=4 softtabstop=0 expandtab smarttab:

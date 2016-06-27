@@ -10,6 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 
+Plugin 'hynek/vim-python-pep8-indent'
+
 " Plugin 'rking/ag.vim'
 " Plugin 'Chun-Yang/vim-action-ag'
 
@@ -41,7 +43,7 @@ silent! colorscheme solarized
 
 " Otherwise we need to use shift to copy in nvim
 if NVIM()
-  set mouse=v
+  set mouse=vi
 else
   set mouse=a
 endif

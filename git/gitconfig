@@ -17,6 +17,7 @@
   ci = commit
   co = checkout
   meld = difftool --dir-diff
+  llog = log --oneline --decorate --graph
 
 [include]
   path = .gitlocal

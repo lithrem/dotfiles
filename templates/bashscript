@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+SCRIPT=$(basename "${0}")
+LOGDIR=${LOGDIR:-/tmp/}
+DEBUG=${DEBUG:-NO}
+
+exec > >(tee --append "${LOGDIR}/${SCRIPT}.log") 2>&1
+
+if grep --ignore-case --quiet debug <<< "$@" || [ "${DEBUG}" != "NO" ]
+then
+  set -o xtrace
+fi
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+set -o nounset
+
+cleanup_exit() {
+  echo 'exit'
+}
+trap cleanup_exit EXIT
+
+
+# vim: textwidth=0 tabstop=2 shiftwidth=2 expandtab smarttab:

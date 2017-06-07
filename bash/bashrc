@@ -19,6 +19,8 @@
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
+alias vimup='vim +PluginUpdate'
+
 # User specific aliases and functions
 unset GIT_PS1_SHOWDIRTYSTATE
 unset GIT_PS1_SHOWSTASHSTATE

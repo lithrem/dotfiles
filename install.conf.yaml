@@ -21,6 +21,9 @@
     ~/.inputrc: term/inputrc
     ~/.Xresources: term/Xresources
 
+# Tmux
+    ~/.tmux: tmux/tmux.conf
+
 # Vim
     ~/.vimrc: vim/vimrc
 
